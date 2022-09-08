@@ -54,3 +54,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+#devise導入
+gem 'devise'
+
+#Ruby3.1.2本番環境で動作させる
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"
