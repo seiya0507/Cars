@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   #ユーザー側
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: "public/sessions"
+    sessions: "public/sessions",
   }
 
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
 
   #namespaceでグループ化してそれぞれ管理。
   #管理者側

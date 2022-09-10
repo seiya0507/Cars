@@ -23,4 +23,13 @@ class User < ApplicationRecord
   #ActiveStorage設定
   has_one_attached :profile_image
 
+  def self.guest
+    #()の条件を返す・新規作成を繰り返すメソッド
+    find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |user|
+                      #ランダムな文字列を生成するメソッド
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
 end
