@@ -8,9 +8,31 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://kit.fontawesome.com/8ebbdd50fb.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header>
+      <% if admin_signed_in? %>
+        <%= render "layouts/header" %>
+      <% elsif user_signed_in? %>
+        <%= render "layouts/public_header" %>
+      <% else %>
+        <%= render "layouts/guest_user_header" %>
+      <% end %>
+    </header>
+    <footer>
+      <% if user_signed_in? %>
+        相手が不快になるような投稿・コメントはお控えいただきますようお願い申し上げます。
+      <% else %>
+        レビューの投稿・いいね・コメント・ユーザーのフォローは
+        <%= link_to "新規会員登録", new_user_registration_path %>
+        または
+        <%= link_to "ログイン", new_user_session_path %>
+        が必要です。
+      <% end %>
+    </footer>
     <%= yield %>
   </body>
 </html>
