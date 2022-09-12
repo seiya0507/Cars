@@ -11,9 +11,8 @@
 
     <script src="https://kit.fontawesome.com/8ebbdd50fb.js" crossorigin="anonymous"></script>
   </head>
-
-  <body class="d-flex flex-column vh-100">
-    <header>
+  <body>
+    <header class="shadow-sm">
       <% if admin_signed_in? %>
         <%= render "layouts/header" %>
       <% elsif user_signed_in? %>
@@ -22,17 +21,30 @@
         <%= render "layouts/guest_user_header" %>
       <% end %>
     </header>
-    <footer>
-      <% if user_signed_in? %>
-        相手が不快になるような投稿・コメントはお控えいただきますようお願い申し上げます。
-      <% else %>
-        レビューの投稿・いいね・コメント・ユーザーのフォローは
-        <%= link_to "新規会員登録", new_user_registration_path %>
-        または
-        <%= link_to "ログイン", new_user_session_path %>
-        が必要です。
+    <main class="row pt-2">
+      <% if flash[:notice] %>
+        <p id="notice">
+          <%= flash[:notice] %>
+        </p>
       <% end %>
-    </footer>
+    </main>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <% if user_signed_in? %>
+              相手が不快になるような投稿・コメントはお控えいただきますようお願い申し上げます。
+            <% else %>
+              レビューの投稿・いいね・コメント・ユーザーのフォローは
+              <%= link_to "新規会員登録", new_user_registration_path %>
+              または
+              <%= link_to "ログイン", new_user_session_path %>
+              が必要です。
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

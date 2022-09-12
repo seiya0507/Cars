@@ -1,6 +1,5 @@
-<header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <%#= link_to image_tag, root_path, class: "btn-btn-info pull-left ml-2" style ="width:250px;height:300px" %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <%#= link_to image_tag, root_path, class: "btn-btn-info pull-left ml-2" style ="width:250px;height:300px" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,24 +7,20 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "About", homes_about_path, class: 'nav-link text-light btn btn-info rounded-circle p-0" style="width:2rem;height:2rem;' %>
+          <%= link_to "About", homes_about_path, class: 'nav-link text-light btn btn-danger rounded-circle p-0" style="width:2rem;height:2rem;' %>
         </li>
         <li class="nav-item">
-          <%= link_to "マイページ", user_path(current_user), class: 'nav-link text-light btn btn-info rounded-circle p-0" style="width:2rem;height:2rem;' %>
+          <%= link_to "マイページ", user_path(current_user), class: 'nav-link text-light btn btn-danger rounded-circle p-0" style="width:2rem;height:2rem;' %>
         </li>
         <li class="nav-item">
-          <%= link_to "レビュー", cars_path, class: 'nav-link text-light btn btn-info rounded-circle p-0" style="width:2rem;height:2rem;' %>
+          <%= link_to "レビュー", cars_path, class: 'nav-link text-light btn btn-danger rounded-circle p-0" style="width:2rem;height:2rem;' %>
         </li>
         <li class="nav-item">
-          <%= link_to "ユーザー", users_path, class: 'nav-link text-light btn btn-info rounded-circle p-0" style="width:2rem;height:2rem;' %>
+          <%= link_to "ユーザー", users_path, class: 'nav-link text-light btn btn-danger rounded-circle p-0" style="width:2rem;height:2rem;' %>
         </li>
         <li class="nav-item">
-          <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link text-light btn btn-info rounded-circle p-0" style="width:2rem;height:2rem;' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ゲストログアウト", users_guest_sign_out_path, class: 'nav-link text-light btn btn-info rounded-circle p-0" style="width:2rem;height:2rem;', method: :delete %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light btn btn-danger rounded-circle p-0" style="width:2rem;height:2rem;' %>
         </li>
       </ul>
     </div>
-  </nav>
-</header>
+</nav>
