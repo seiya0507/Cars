@@ -1,13 +1,13 @@
 <div class="container px-5 px-sm-0">
-  <div class="row">
+  <div class="row pt-3">
     <div class="col-md-3">
-      <%= render 'cars/error', new_car: @new_car %>
-      <%= render 'user', user: @user %>
-      <%= render 'cars/create', book: @new_book %>
+      <%= render 'public/cars/error', new_car: @new_car %>
+      <%= render 'information', user: @user %>
+      <%= render 'public/cars/create_form', car: @new_car %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>登録ユーザー詳細</h2>
-      <table class="table table-hover table-inverse">
+      <table class="table table-hover">
         <tr>
         <% @cars.each do |car| %>
           <td>
@@ -18,7 +18,7 @@
           <td><%= link_to car.title, car_path(car.id) %></td>
           <td><%= car.body %></td>
           <td id="favorite_buttons_<%= car.id %>">
-            <%= render "favorites/favorite_btn", car: car %>
+            <%= render "public/favorites/favorites-btn", car: car %>
           </td>
           <td>
             <div id="star-rate<%= car.id %>">

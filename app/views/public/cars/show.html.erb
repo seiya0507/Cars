@@ -1,28 +1,28 @@
-<div class="container">
-  <div class="row">
+<div class="container px-5 px-sm-0">
+  <div class="row pt-3">
     <div class="col-md-3">
       <%= render 'error', new_car: @new_car %>
-      <%= render 'users/user', user: @car_user %>
-      <%= render 'create', car: @new_car %>
+      <%= render 'public/users/information', user: @car_user %>
+      <%= render 'create_form', car: @new_car %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>レビュー投稿詳細</h2>
       <table class="table">
         <tr>
           <td>
-            <%= image_tag car.image, size: "50x100" %>
+            <%= image_tag @car.image, size: "100x100" %>
           </td>
           <td><%= @car.title %></td>
           <td><%= @car.body %></td>
         <% if @car.user == current_user %>
-          <td><%= link_to "編集", edit_car_path(@car.id), class:"btn btn-sm btn-success" %></td>
-          <td><%= link_to "削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td>
+          <td><%= link_to "編集", edit_car_path(@car.id), class:"btn btn-success" %></td>
+          <td><%= link_to "削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %></td>
         <% end %>
           <td id="favorite_buttons_<%= @car.id %>">
-            <%= render "favorites/favorite-btn", car: @car %>
+            <%= render "public/favorites/favorites-btn", car: @car %>
           </td>
           <td class="comments-count">
-            <%= render "book_comments/counter", car: @car %>
+            <%= render "public/comments/counter", car: @car %>
           </td>
           <td>
             <div id="star-rate<%= @car.id%>">
@@ -42,9 +42,9 @@
         </tr>
       </table>
       <div class="comments">
-        <%= render 'comments/index', car: @car, comment: @comment %>
+        <%= render 'public/comments/index', car: @car, comment: @comment %>
       </div>
-      <%= render 'comments/form', car: @car, comment: @comment %>
+      <%= render 'public/comments/comment_form', car: @car, comment: @comment %>
     </div>
   </div>
 </div>
