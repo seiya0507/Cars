@@ -1,0 +1,10 @@
+<% if new_car.errors.any? %>
+  <h3><%= new_car.errors.count %>
+   errors!
+  </h3>
+  <ul>
+  <% new_car.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>

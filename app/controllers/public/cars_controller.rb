@@ -1,4 +1,6 @@
 class Public::CarsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def new
     @car = Car.new
   end
@@ -27,6 +29,7 @@ class Public::CarsController < ApplicationController
     @new_car = Car.new
     @user = current_user
     @car_user = @car.user
+    @comment = Comment.new
   end
 
   def edit
@@ -58,7 +61,7 @@ class Public::CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:title, :body, :image)
+    params.require(:car).permit(:title, :body, :image, :star)
   end
 
 end

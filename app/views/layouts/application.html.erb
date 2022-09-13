@@ -34,9 +34,10 @@
         <div class="row">
           <div class="mx-auto">
             <% if user_signed_in? %>
-              相手が不快になるような投稿・コメントはお控えいただきますようお願い申し上げます。
-            <% else %>
-              レビューの投稿・いいね・コメント・ユーザーのフォローは
+              相手が不快になるような投稿・コメントはお控えいただきますようお願い申し上げます。</br>
+              <i class="fa-sharp fa-solid fa-triangle-exclamation"></i><span style="color:red;">ゲストユーザー</span>はレビューの投稿・いいね・コメント・ユーザーのフォローができません。
+            <% elsif %>
+              <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>レビューの投稿・いいね・コメント・ユーザーのフォローは
               <%= link_to "新規会員登録", new_user_registration_path %>
               または
               <%= link_to "ログイン", new_user_session_path %>

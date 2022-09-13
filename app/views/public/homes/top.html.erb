@@ -4,7 +4,9 @@
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row pt-5">
           <h3>ようこそCarsへ！</h3>
-          <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %></td>
+          <% unless user_signed_in? %>
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+          <% end %>
         </div>
       </div>
     </div>

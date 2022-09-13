@@ -1,0 +1,11 @@
+<% if car.favorited_by?(current_user) %>
+  <%= link_to car_favorites_path(car), method: :delete, remote: true do %>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= car.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to car_favorites_path(car), method: :post, remote: true do %>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+    <%= car.favorites.count %>
+  <% end %>
+<% end %>

@@ -1,2 +1,46 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'cars/error', new_car: @new_car %>
+      <%= render 'user', user: @user %>
+      <%= render 'cars/create', book: @new_book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>登録ユーザー詳細</h2>
+      <table class="table table-hover table-inverse">
+        <tr>
+        <% @cars.each do |car| %>
+          <td>
+            <%= link_to car_path(car.id) do %>
+              <%= image_tag car.image, size: "50x100" %>
+            <% end %>
+          </td>
+          <td><%= link_to car.title, car_path(car.id) %></td>
+          <td><%= car.body %></td>
+          <td id="favorite_buttons_<%= car.id %>">
+            <%= render "favorites/favorite_btn", car: car %>
+          </td>
+          <td>
+            <div id="star-rate<%= car.id %>">
+              <script>
+                $('#star-rate<%= car.id %>').empty();
+                $('#star-rate<%= car.id%>').raty({
+                 size      : 36,
+                 starOff   : '<%= asset_path('star-off.png') %>',
+                 starOn    : '<%= asset_path('star-on.png') %>',
+                 half      : false,
+                 readOnly: true,
+                 score: <%= car.star %>,
+                });
+              </script>
+            </div>
+          </td>
+          <td>
+            <p><%= link_to "#{car.comments.count} コメント", car_path(car.id) %></p>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

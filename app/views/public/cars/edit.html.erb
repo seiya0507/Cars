@@ -1,2 +1,33 @@
-<h1>Public::Cars#edit</h1>
-<p>Find me in app/views/public/cars/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>レビュー投稿編集</h1>
+      <% if @car.errors.any? %>
+       <h3><%= @car.errors.count %>error!</h3>
+      <ul>
+       <% @car.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+       <% end %>
+      </ul>
+      <% end %>
+      <%= form_with model: @car, url: car_path(@car.id), method: :patch do |f| %>
+        <div class="form-group">
+          <label for="car_image">レビュー画像</label>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+        <div class="form-group">
+          <label for="car_title">レビュータイトル</label>
+          <%= f.text_field :title, class: "form-control car_title" %>
+        </div>
+        <div class="form-group">
+          <label for="car_body">レビュー内容</label>
+          <%= f.text_area :body, class: "form-control car_body" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit '更新', class: "btn btn-success" %>
+        </div>
+        <%= link_to "レビュー投稿詳細に戻る", car_path(@car.id) %>
+      <% end %>
+    </div>
+  </div>
+</div>

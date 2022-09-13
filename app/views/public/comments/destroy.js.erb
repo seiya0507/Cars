@@ -1,0 +1,3 @@
+$(".comments-count").html("<%= j(render 'comments/counter', car: @car) %>");
+$(".comments").html("<%= j(render 'comments/index', car: @car) %>");
+$("#comment_comment").val("");
