@@ -23,9 +23,6 @@
           </td>
           <td><%= link_to car.title, car_path(car.id) %></td>
           <td><%= car.body %></td>
-          <td id="favorite_buttons_<%= car.id %>">
-            <%= render "public/favorites/favorites-btn", car: car %>
-          </td>
           <td>
             <div id="star-rate<%= car.id %>">
               <script>
@@ -40,6 +37,9 @@
                 });
               </script>
             </div>
+          </td>
+          <td id="favorite_buttons_<%= car.id %>">
+            <%= render "public/favorites/favorites-btn", car: car %>
           </td>
           <td>
             <p><%= link_to "#{car.comments.count} コメント", car_path(car.id) %></p>

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #管理者側
   namespace :admin do
     #登録ユーザー管理
-    resources :users, only: :index
+    resources :users, only: [:index, :show]
     #レビュー投稿管理
     resources :cars, only: [:index, :show, :destroy]
     #凍結中ユーザー管理
