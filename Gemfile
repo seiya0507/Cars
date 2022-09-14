@@ -59,6 +59,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #devise導入
 gem 'devise'
 
+
+#jQueryの読み込み
+gem 'jquery-rails'
+
+
 #Ruby3.1.2本番環境で動作させる
 gem "net-smtp"
 gem "net-pop"

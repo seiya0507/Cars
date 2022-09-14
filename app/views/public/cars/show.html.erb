@@ -10,20 +10,18 @@
       <table class="table">
         <tr>
           <td>
-            <%= image_tag @car.image, size: "100x100" %>
+            <% if @car.image.attached? %>
+              <%= image_tag @car.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image_car', size: "100x100" %>
+            <% end %>
           </td>
           <td><%= @car.title %></td>
           <td><%= @car.body %></td>
         <% if @car.user == current_user %>
-          <td><%= link_to "編集", edit_car_path(@car.id), class:"btn btn-success" %></td>
-          <td><%= link_to "削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %></td>
+          <td><%= link_to "編集", edit_car_path(@car.id), class:"btn btn-sm btn-info" %></td>
+          <td><%= link_to "削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td>
         <% end %>
-          <td id="favorite_buttons_<%= @car.id %>">
-            <%= render "public/favorites/favorites-btn", car: @car %>
-          </td>
-          <td class="comments-count">
-            <%= render "public/comments/counter", car: @car %>
-          </td>
           <td>
             <div id="star-rate<%= @car.id%>">
               <script>
@@ -39,12 +37,23 @@
               </script>
             </div>
           </td>
+          <td id="favorite_buttons_<%= @car.id %>">
+            <%= render "public/favorites/favorites-btn", car: @car %>
+          </td>
+          <td class="comments-count">
+            <%= render "public/comments/counter", car: @car %>
+          </td>
         </tr>
       </table>
+      <h4>コメント一覧</h4>
       <div class="comments">
         <%= render 'public/comments/index', car: @car, comment: @comment %>
       </div>
-      <%= render 'public/comments/comment_form', car: @car, comment: @comment %>
+      <div class="row pt-5">
+      <% unless @user.name == "guestuser" %>
+        <%= render 'public/comments/comment_form', car: @car, comment: @comment %>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>

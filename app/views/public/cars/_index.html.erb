@@ -1,5 +1,5 @@
 <div class="container px-5 px-sm-0">
-  <div class="row">
+  <div class="row pt-3">
     <div class="col-md-3">
       <%= render 'error', new_car: new_car %>
       <%= render 'public/users/information', user: user %>
@@ -11,16 +11,19 @@
         <% cars.each do |car| %>
         <tr>
           <td>
-            <%= link_to car_path(car.id) do %>
-              <%= image_tag car.image, size: "50x100" %>
+            <% if car.image.attached? %>
+              <%= link_to car_path(car.id) do %>
+                <%= image_tag car.image, size: "100x100" %>
+              <% end %>
+            <% else %>
+              <%= link_to car_path(car.id) do %>
+                <%= image_tag 'no_image_car', size: "100x100" %>
+              <% end %>
             <% end %>
           </td>
           <td><%= link_to car.user.name, user_path(car.user.id) %></td>
           <td><%= link_to car.title, car_path(car.id) %></td>
           <td><%= car.body %></td>
-          <td id="favorite_buttons_<%= car.id %>">
-            <%= render "public/favorites/favorites-btn", car: car %>
-          </td>
           <td>
             <div id="star-rate<%= car.id %>">
               <script>
@@ -35,6 +38,9 @@
                 });
               </script>
             </div>
+          </td>
+          <td id="favorite_buttons_<%= car.id %>">
+            <%= render "public/favorites/favorites-btn", car: car %>
           </td>
           <td>
             <p><%= link_to "#{car.comments.count} コメント", car_path(car.id) %></p>

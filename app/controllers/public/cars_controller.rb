@@ -1,5 +1,6 @@
 class Public::CarsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:create]
 
   def new
     @car = Car.new
@@ -64,4 +65,11 @@ class Public::CarsController < ApplicationController
     params.require(:car).permit(:title, :body, :image, :star)
   end
 
+
+  def ensure_guest_user
+    @user = current_user
+    if @user.name == "guestuser"
+      redirect_to cars_path, notice: 'ゲストユーザーは投稿できません！'
+    end
+  end
 end

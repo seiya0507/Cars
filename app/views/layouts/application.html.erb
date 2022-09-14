@@ -14,11 +14,11 @@
   <body>
     <header class="shadow-sm">
       <% if admin_signed_in? %>
-        <%= render "layouts/header" %>
+        <%= render "layouts/admin_header" %>
       <% elsif user_signed_in? %>
         <%= render "layouts/public_header" %>
       <% else %>
-        <%= render "layouts/guest_user_header" %>
+        <%= render "layouts/header" %>
       <% end %>
     </header>
     <main class="row pt-2">
@@ -34,14 +34,10 @@
         <div class="row">
           <div class="mx-auto">
             <% if user_signed_in? %>
-              相手が不快になるような投稿・コメントはお控えいただきますようお願い申し上げます。</br>
-              <i class="fa-sharp fa-solid fa-triangle-exclamation"></i><span style="color:red;">ゲストユーザー</span>はレビューの投稿・いいね・コメント・ユーザーのフォローができません。
-            <% elsif %>
-              <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>レビューの投稿・いいね・コメント・ユーザーのフォローは
-              <%= link_to "新規会員登録", new_user_registration_path %>
-              または
-              <%= link_to "ログイン", new_user_session_path %>
-              が必要です。
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              相手が不快になるようなレビュー・コメントの投稿はお控えいただきますようお願い申し上げます。</br>
+              <i class="fa-sharp fa-solid fa-triangle-exclamation"></i><span style="color:red;">ゲストユーザー</span>はレビュー・コメントの投稿、いいね、ユーザーのフォローができません。
+              <span style="color:blue;">新規登録</span>または<span style="color:blue;">ログイン</span>が必要です。
             <% end %>
           </div>
         </div>
