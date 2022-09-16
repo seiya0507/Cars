@@ -1,2 +1,90 @@
-<h1>Public::Searches#search</h1>
-<p>Find me in app/views/public/searches/search.html.erb</p>
+<div class="container px-5 px-sm-0">
+<% unless current_user.freeze %>
+  <div class="row pt-3">
+    <div class="col-md-10 offset-md-1">
+      <% if @model == 'user' %>
+        <h2>登録ユーザ検索結果 "<%= @content %>"</h2>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ユーザー名</th>
+              <th>マイカー</th>
+              <th>フォロー数</th>
+              <th>フォロワー数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @records.each do |user| %>
+              <tr>
+                <td>
+                  <%= link_to user_path(user.id) do %>
+                    <%= image_tag user.get_profile_image(100,100) %>
+                  <% end %>
+                </td>
+                <td><%= user.name %></td>
+                <td><%= user.introduction %></td>
+                <td class="follow_count">
+                  <%= render 'public/relationships/follow_counter', user: user %>
+                </td>
+                <td class="follower_count">
+                  <%= render 'public/relationships/follower_counter', user: user %>
+                </td>
+                <td id="follow_<%= current_user.id %>">
+                  <%= render 'public/relationships/follow', user: user %>
+                </td>
+                <td><%= link_to "詳細", user_path(user.id), class:"btn btn-sm btn-success" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% elsif @model == 'car' %>
+        <h2>レビュー投稿検索結果 "<%= @content %>"</h2>
+        <table class="table table-hover">
+        <% @records.each do |car| %>
+          <tr>
+            <td>
+              <% if car.image.attached? %>
+                <%= link_to car_path(car.id) do %>
+                  <%= image_tag car.image, size: "100x100" %>
+                <% end %>
+              <% else %>
+                <%= link_to car_path(car.id) do %>
+                  <%= image_tag 'no_image_car', size: "100x100" %>
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= link_to car.user.name, user_path(car.user.id) %></td>
+            <td><%= link_to car.title, car_path(car.id) %></td>
+            <td><%= car.body %></td>
+            <td>
+              <div id="star-rate<%= car.id %>">
+                <script>
+                  $('#star-rate<%= car.id %>').empty();
+                  $('#star-rate<%= car.id%>').raty({
+                   size      : 36,
+                   starOff   : '<%= asset_path('star-off.png') %>',
+                   starOn    : '<%= asset_path('star-on.png') %>',
+                   half      : false,
+                   readOnly: true,
+                   score: <%= car.star %>,
+                  });
+                </script>
+              </div>
+            </td>
+            <td id="favorite_buttons_<%= car.id %>">
+              <%= render 'public/favorites/favorites-btn', car: car %>
+            </td>
+            <td>
+              <p><%= link_to "#{car.comments.count} コメント", car_path(car.id) %></p>
+            </td>
+          </tr>
+        <% end %>
+        </table>
+      <% end %>
+    </div>
+<% else %>
+  <h2>本アカウントは凍結中です。</h2>
+<% end %>
+  </div>
+</div>

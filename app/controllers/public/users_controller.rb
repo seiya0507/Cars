@@ -36,7 +36,6 @@ class Public::UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
   end
 
-　#退会アクション
   def withdraw
     @user = User.find_by(email: params[:email])
     current_user.update(is_deleted: true)

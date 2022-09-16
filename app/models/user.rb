@@ -15,7 +15,7 @@ class User < ApplicationRecord
   #フォロー
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
-  #一覧ページで使用
+  #フォロー・フォロワー一覧ページで使用
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
@@ -39,6 +39,7 @@ class User < ApplicationRecord
   end
 
 
+  #プロフィール画像取得メソッド
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -48,6 +49,7 @@ class User < ApplicationRecord
   end
 
 
+  #フォローメソッド
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -60,4 +62,17 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+
+  #キーワード検索メソッド
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      User.where('name LIKE ?', '%' + content + '%')
+    end
+  end
 end

@@ -12,7 +12,23 @@ class Car < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
 
+
+  #いいねメソッド
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+
+  #キーワード検索メソッド
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Car.where(title: content)
+    elsif method == 'forward'
+      Car.where('title LIKE ?', content+'%')
+    elsif method == 'backward'
+      Car.where('title LIKE ?', '%'+content)
+    else
+      Car.where('title LIKE ?', '%'+content+'%')
+    end
   end
 end
