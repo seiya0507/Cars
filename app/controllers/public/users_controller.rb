@@ -40,6 +40,7 @@ class Public::UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
     current_user.update(is_deleted: true)
     reset_session
+    flash[:notice] = "退会しました。またのご利用をお待ちしております。"
     redirect_to root_path
   end
 

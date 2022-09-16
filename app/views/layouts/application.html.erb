@@ -14,20 +14,23 @@
   <body>
     <header class="shadow-sm">
       <% if admin_signed_in? %>
-        <%= render "layouts/admin_header" %>
+        <%= render 'layouts/admin_header' %>
       <% elsif user_signed_in? %>
-        <%= render "layouts/public_header" %>
+        <%= render 'layouts/public_header' %>
       <% else %>
-        <%= render "layouts/header" %>
+        <%= render 'layouts/header' %>
       <% end %>
     </header>
+    <div class="container">
     <main class="row pt-2">
       <% if flash[:notice] %>
         <p id="notice">
           <%= flash[:notice] %>
         </p>
       <% end %>
+      <%= flash[:error] %>
     </main>
+    </div>
     <%= yield %>
     <footer>
       <div class="container mt-5">

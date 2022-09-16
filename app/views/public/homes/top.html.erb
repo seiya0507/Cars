@@ -3,10 +3,14 @@
     <div class="mx-auto col-11 col-sm-10 col-ld-8 col-xl-6">
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row pt-5">
+        <% unless current_user.freeze %>
           <h3>ようこそCarsへ！</h3>
           <% unless user_signed_in? %>
             <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
           <% end %>
+        <% else %>
+          <h2>本アカウントは凍結中です。</h2>
+        <% end %>
         </div>
       </div>
     </div>

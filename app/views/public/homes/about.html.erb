@@ -1,2 +1,16 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-ld-8 col-xl-6">
+      <div class="row pt-5">
+        <% unless current_user.freeze %>
+          <h3>ようこそCarsへ！about</h3>
+          <% unless user_signed_in? %>
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+          <% end %>
+        <% else %>
+          <h2>本アカウントは凍結中です。</h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

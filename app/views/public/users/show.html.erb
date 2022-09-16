@@ -1,4 +1,5 @@
 <div class="container px-5 px-sm-0">
+<% unless current_user.freeze %>
   <div class="row pt-3">
     <div class="col-md-3">
       <%= render 'public/cars/error', new_car: @new_car %>
@@ -39,7 +40,7 @@
             </div>
           </td>
           <td id="favorite_buttons_<%= car.id %>">
-            <%= render "public/favorites/favorites-btn", car: car %>
+            <%= render 'public/favorites/favorites-btn', car: car %>
           </td>
           <td>
             <p><%= link_to "#{car.comments.count} コメント", car_path(car.id) %></p>
@@ -49,4 +50,7 @@
       </table>
     </div>
   </div>
+<% else %>
+  <h2>本アカウントは凍結中です。</h2>
+<% end %>
 </div>

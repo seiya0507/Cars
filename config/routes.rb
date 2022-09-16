@@ -19,11 +19,16 @@ Rails.application.routes.draw do
   #管理者側
   namespace :admin do
     #登録ユーザー管理
-    resources :users, only: [:index, :show]
-    #レビュー投稿管理
-    resources :cars, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show] do
+      #登録ユーザー凍結
+      resource :freeze, only: [:create, :destroy]
+    end
+
     #凍結中ユーザー管理
     resources :freezes, only: :index
+
+    #レビュー投稿管理
+    resources :cars, only: [:index, :show, :destroy]
   end
 
 
@@ -39,8 +44,7 @@ Rails.application.routes.draw do
       #退会
       get 'users/unsubscribe'
       patch 'users/withdraw'
-      #凍結
-      resource :freeze, only: [:create, :destroy], module: 'admin'
+
       #フォロー
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
