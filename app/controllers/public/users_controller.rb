@@ -36,6 +36,7 @@ class Public::UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
   end
 
+　#退会アクション
   def withdraw
     @user = User.find_by(email: params[:email])
     current_user.update(is_deleted: true)
@@ -44,6 +45,7 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+
   private
 
   def user_params
@@ -51,6 +53,7 @@ class Public::UsersController < ApplicationController
   end
 
 
+  #ゲストユーザーの制限メソッド
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"

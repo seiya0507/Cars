@@ -1,0 +1,45 @@
+<div class="container px-5 px-sm-0">
+  <div class="row pt-3">
+    <div class="col-md-10 offset-md-1">
+      <h2>レビュー投稿詳細</h2>
+      <table class="table">
+        <tr>
+          <td>
+            <% if @car.image.attached? %>
+              <%= image_tag @car.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image_car', size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= @car.title %></td>
+          <td><%= @car.body %></td>
+          <td>
+            <div id="star-rate<%= @car.id%>">
+              <script>
+                $('#star-rate<%= @car.id %>').empty();
+                $('#star-rate<%= @car.id%>').raty({
+                 size      : 36,
+                 starOff   : '<%= asset_path('star-off.png') %>',
+                 starOn    : '<%= asset_path('star-on.png') %>',
+                 half      : false,
+                 readOnly: true,
+                 score: <%= @car.star %>,
+                });
+              </script>
+            </div>
+          </td>
+          <td class="comments-count">
+            <%= render 'public/comments/counter', car: @car %>
+          </td>
+          <td><%= link_to "削除", admin_car_path(@car.id), method: :delete, class:"btn btn-sm btn-danger" %></td>
+        </tr>
+      </table>
+      <h4>コメント一覧</h4>
+      <% @car.comments.each do |comment| %>
+        <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
+        <%= link_to comment.user.name, admin_users_path(comment.user_id) %>
+        <%= comment.comment %>
+      <% end %>
+    </div>
+  </div>
+</div>

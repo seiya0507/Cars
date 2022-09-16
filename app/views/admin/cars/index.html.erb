@@ -1,2 +1,42 @@
-<h1>Admin::Cars#index</h1>
-<p>Find me in app/views/admin/cars/index.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row pt-3">
+    <div class="col-md-10 offset-md-1">
+      <h2>レビュー投稿一覧管理</h2>
+      <table class="table table-hover">
+        <% @cars.each do |car| %>
+        <tr>
+          <td>
+            <% if car.image.attached? %>
+              <%= image_tag car.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image_car', size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= car.user.name %></td>
+          <td><%= car.title %></td>
+          <td><%= car.body %></td>
+          <td>
+            <div id="star-rate<%= car.id %>">
+              <script>
+                $('#star-rate<%= car.id %>').empty();
+                $('#star-rate<%= car.id%>').raty({
+                 size      : 36,
+                 starOff   : '<%= asset_path('star-off.png') %>',
+                 starOn    : '<%= asset_path('star-on.png') %>',
+                 half      : false,
+                 readOnly: true,
+                 score: <%= car.star %>,
+                });
+              </script>
+            </div>
+          </td>
+          <td>
+            <p><%= link_to "#{car.comments.count} コメント", admin_car_path(car.id) %></p>
+          </td>
+          <td><%= link_to "詳細", admin_car_path(car.id), class:"btn btn-sm btn-success" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

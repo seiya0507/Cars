@@ -1,6 +1,6 @@
 <% car.comments.each do |comment| %>
   <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-  <%= comment.user.name %>
+  <%= link_to comment.user.name, user_path(comment.user_id) %>
   <%= comment.comment %>
   <% if comment.user == current_user %>
     <%= link_to "削除", car_comment_path(comment.car, comment), method: :delete, remote: true, class: "btn btn-danger" %>
