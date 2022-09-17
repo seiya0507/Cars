@@ -19,8 +19,8 @@ class Public::CarsController < ApplicationController
     end
   end
 
-  def index
-    @cars = Car.all
+  def index #タグ検索で絞り込み取得、それ以外は全取得
+    @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars : Car.all
     @new_car = Car.new
     @user = current_user
   end
@@ -62,7 +62,7 @@ class Public::CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:title, :body, :image, :star)
+    params.require(:car).permit(:title, :body, :image, :star, tag_ids: [])
   end
 
 

@@ -14,6 +14,11 @@
           <td><%= @car.title %></td>
           <td><%= @car.body %></td>
           <td>
+            <% @car.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </td>
+          <td>
             <div id="star-rate<%= @car.id%>">
               <script>
                 $('#star-rate<%= @car.id %>').empty();

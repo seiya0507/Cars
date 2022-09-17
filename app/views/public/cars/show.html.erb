@@ -19,6 +19,11 @@
           </td>
           <td><%= @car.title %></td>
           <td><%= @car.body %></td>
+          <td>
+            <% @car.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </td>
         <% if @car.user == current_user %>
           <td><%= link_to "編集", edit_car_path(@car.id), class:"btn btn-sm btn-info" %></td>
           <td><%= link_to "削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td>

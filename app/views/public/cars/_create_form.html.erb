@@ -13,6 +13,17 @@
     <label for="car_body">レビュー内容</label>
     <%= f.text_field :body, class:"form-control car_body" %>
   </div>
+  <div class="check_box">
+    <p>タグ</p>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+    <div>
+      <%= tag.label do %>
+        <%= tag.check_box %>
+        <%= tag.text %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
   <p>評価</p>
   <div class="form-group row" id="star">
     <%= f.label :star, "評価", class:"col-md-3 col-form-label" %>
