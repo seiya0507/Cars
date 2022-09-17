@@ -1,0 +1,47 @@
+<div class="container px-5 px-sm-0">
+<% unless current_user.freeze %>
+  <div class="row pt-3">
+    <div class="col-md-10 offset-md-1">
+      <h2>フォローユーザー一覧</h2>
+      <% if users.exists? %>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th><span style="font-size:13px;">ユーザー名</span></th>
+              <th><span style="font-size:15px;">マイカー</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.each do |user| %>
+              <tr>
+                <td>
+                  <%= link_to user_path(user.id) do %>
+                    <%= image_tag user.get_profile_image(100,100) %>
+                  <% end %>
+                </td>
+                <td><%= link_to user.name, user_path(user.id) %></td>
+                <td><%= user.introduction %></td>
+                <td class="follow-count">
+                  <%= render 'public/relationships/follow_counter', user: user %>
+                </td>
+                <td class="follower-count">
+                  <%= render 'public/relationships/follower_counter', user: user %>
+                </td>
+                <td id="follow_<%= current_user.id %>">
+                  <%= render 'public/relationships/follow', user: user %>
+                </td>
+                <td><%= link_to "ユーザー詳細へ", user_path(user.id), class:"btn btn-sm btn-success" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>フォローユーザーはいません。</p>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <h2>本アカウントは凍結中です。</h2>
+<% end %>
+</div>
