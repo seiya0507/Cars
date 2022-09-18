@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     #キーワード検索
     get "/search" => "searches#search"
 
-    resources :users, only: [:index, :show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update] do
       #退会
       get 'users/unsubscribe'
       patch 'users/withdraw'

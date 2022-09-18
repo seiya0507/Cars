@@ -8,16 +8,13 @@
       <span style="color:yellow;">ようこそ<%= current_user.name %>さん！</span>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "About", homes_about_path, class:"nav-link text-light btn btn-danger rounded-circle p-0" "style=width:2rem;height:2rem;" %>
+          <%= link_to "Carsとは？", homes_about_path, class:"nav-link text-light btn btn-danger rounded-circle p-0" "style=width:2rem;height:2rem;" %>
         </li>
         <li class="nav-item">
           <%= link_to "マイページ", user_path(current_user), class:"nav-link text-light btn btn-danger rounded-circle p-0" "style=width:2rem;height:2rem;" %>
         </li>
         <li class="nav-item">
           <%= link_to "レビュー", cars_path, class:"nav-link text-light btn btn-danger rounded-circle p-0" "style=width:2rem;height:2rem;" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ユーザー", users_path, class:"nav-link text-light btn btn-danger rounded-circle p-0" "style=width:2rem;height:2rem;" %>
         </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-light btn btn-danger rounded-circle p-0" "style=width:2rem;height:2rem;" %>

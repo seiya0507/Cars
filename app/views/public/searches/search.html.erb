@@ -30,10 +30,7 @@
                 <td class="follower_count">
                   <%= render 'public/relationships/follower_counter', user: user %>
                 </td>
-                <td id="follow_<%= current_user.id %>">
-                  <%= render 'public/relationships/follow', user: user %>
-                </td>
-                <td><%= link_to "詳細", user_path(user.id), class:"btn btn-sm btn-success" %></td>
+                <td><%= link_to "ユーザー詳細", user_path(user.id), class:"btn btn-sm btn-info" %></td>
               </tr>
             <% end %>
           </tbody>
@@ -78,6 +75,7 @@
             <td>
               <p><%= link_to "#{car.comments.count} コメント", car_path(car.id) %></p>
             </td>
+            <td><%= link_to "レビュー詳細", car_path(car.id), class:"btn btn-sm btn-info" %></td>
           </tr>
         <% end %>
         </table>

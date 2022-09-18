@@ -14,7 +14,7 @@
           </thead>
           <tbody>
             <% users.each do |user| %>
-              <tr>
+              <tr class="user_id_<%= user.id %>">
                 <td>
                   <%= link_to user_path(user.id) do %>
                     <%= image_tag user.get_profile_image(100,100) %>
@@ -22,16 +22,16 @@
                 </td>
                 <td><%= link_to user.name, user_path(user.id) %></td>
                 <td><%= user.introduction %></td>
-                <td class="follow-count">
+                <td class="follow-count" id="follow_count_<%= user.id %>">
                   <%= render 'public/relationships/follow_counter', user: user %>
                 </td>
-                <td class="follower-count">
+                <td class="follower-count" id="follower_count_<%= user.id %>">
                   <%= render 'public/relationships/follower_counter', user: user %>
                 </td>
-                <td id="follow_<%= current_user.id %>">
+                <td id="follow_<%= user.id %>">
                   <%= render 'public/relationships/follow', user: user %>
                 </td>
-                <td><%= link_to "ユーザー詳細へ", user_path(user.id), class:"btn btn-sm btn-success" %></td>
+                <td><%= link_to "ユーザー詳細へ", user_path(user.id), class:"btn btn-sm btn-info" %></td>
               </tr>
             <% end %>
           </tbody>

@@ -11,15 +11,15 @@
       <th>マイカー</th>
       <td><%= user.introduction %></td>
     </tr>
-    <tr>
+    <tr id="user_id_<%= user.id %>">
       <th>フォロー数</th>
-      <th class="follow_count">
+      <th class="follow_count" id="follow_count_<%= user.id %>">
         <%= render 'public/relationships/follow_counter', user: user %>
       </th>
     </tr>
-    <tr>
+    <tr id="user_id_<%= user.id %>">
       <th>フォロワー数</th>
-      <th class="follower_count">
+      <th class="follower_count" id="follower_count_<%= user.id %>">
         <%= render 'public/relationships/follower_counter', user: user %>
       </th>
     </tr>
@@ -29,7 +29,7 @@
   <% if user == current_user %>
     <%= link_to "ユーザー情報編集", edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" %>
   <% else %>
-    <div id="follow_<%= current_user.id %>">
+    <div id="follow_<%= user.id %>">
       <%= render 'public/relationships/follow', user: user %>
     </div>
   <% end %>

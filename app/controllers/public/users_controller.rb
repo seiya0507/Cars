@@ -2,12 +2,6 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
 
-  def index
-    @users = User.all
-    @user = current_user
-    @new_car = Car.new
-  end
-
   def show
     @user = User.find(params[:id])
     @cars = @user.cars
