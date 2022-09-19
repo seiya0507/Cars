@@ -19,8 +19,8 @@ class Public::CarsController < ApplicationController
     end
   end
 
-  def index #タグ検索で絞り込み取得、それ以外は全取得
-    @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars : Car.all
+  def index #タグ検索で絞り込み取得、それ以外は全取得                           #データの順序を変更、製作日時で降順に並び替え
+    @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars : Car.all.order(created_at: :desc)
     @new_car = Car.new
     @user = current_user
   end
