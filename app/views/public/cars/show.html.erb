@@ -9,28 +9,32 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>レビュー投稿詳細</h2>
-      <p></p>
-      <table class="table">
-        <tr>
-          <td>
+      <div class="row">
+        <div class="card w-80 mx-auto mt-5 shadow text-center">
+          <p></p>
+          <div>
             <% if @car.image.attached? %>
-              <%= image_tag @car.image, size: "100x100" %>
+              <%= image_tag @car.image, size: "400x400", class:"card-img-top mt-3" %>
             <% else %>
-              <%= image_tag 'no_image_car', size: "100x100" %>
+              <%= image_tag 'no_image_car', size: "500x400", class:"card-img-top mt-3" %>
             <% end %>
-          </td>
-          <td><%= @car.title %></td>
-          <td><%= @car.body %></td>
-          <td>
-            <% @car.tags.each do |tag| %>
-              <%= tag.name %>
-            <% end %>
-          </td>
-        <% if @car.user == current_user %>
-          <td><%= link_to "編集", edit_car_path(@car.id), class:"btn btn-sm btn-info" %></td>
-          <td><%= link_to "削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td>
-        <% end %>
-          <td>
+          </div>
+          <div class="car-wrap">
+            <p></p>
+            <div class="car-title">
+              <%= @car.title %>
+            </div>
+            <p></p>
+            <div class="car-body">
+              <%= @car.body %>
+            </div>
+            <p></p>
+            <div class="car-tag">
+              <% @car.tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+            </div>
+            <p></p>
             <div id="star-rate<%= @car.id%>">
               <script>
                 $('#star-rate<%= @car.id %>').empty();
@@ -44,24 +48,39 @@
                 });
               </script>
             </div>
-          </td>
-          <td>投稿日：<%= @car.created_at.strftime('%Y/%m/%d') %></td>
-          <td id="favorite_buttons_<%= @car.id %>">
-            <%= render "public/favorites/favorites-btn", car: @car %>
-          </td>
-          <td class="comments-count">
-            <%= render 'public/comments/counter', car: @car %>
-          </td>
-        </tr>
-      </table>
-      <h4>コメント一覧</h4>
-      <div class="comments">
-        <%= render 'public/comments/index', car: @car, comment: @comment %>
+            <p></p>
+            <div class="car-date">
+              投稿日：<%= @car.created_at.strftime('%Y/%m/%d') %>
+            </div>
+            <p></p>
+            <div id="favorite_buttons_<%= @car.id %>">
+              <%= render "public/favorites/favorites-btn", car: @car %>
+            </div>
+            <p></p>
+            <div class="comments-count">
+              <%= render 'public/comments/counter', car: @car %>
+            </div>
+            <p></p>
+            <div class="car-btn">
+              <% if @car.user == current_user %>
+                <%= link_to "編集する", edit_car_path(@car.id), class:"btn btn-sm btn-info" %> |
+                <%= link_to "削除する", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
+              <% end %>
+            </div>
+            <p></p>
+          </div>
+        </div>
       </div>
       <div class="row pt-5">
-      <% unless @user.name == "guestuser" %>
-        <%= render 'public/comments/comment_form', car: @car, comment: @comment %>
-      <% end %>
+        <h4>コメント一覧</h4>
+        <div class="comments">
+          <%= render 'public/comments/index', car: @car, comment: @comment %>
+        </div>
+        <div class="row pt-5">
+         <% unless @user.name == "guestuser" %>
+           <%= render 'public/comments/comment_form', car: @car, comment: @comment %>
+         <% end %>
+        </div>
       </div>
     </div>
   </div>

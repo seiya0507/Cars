@@ -72,3 +72,7 @@ gem "net-imap"
 
 #フラッシュメッセージの日本語化
 gem 'rails-i18n'
+
+
+#ページネーション
+gem 'kaminari','~> 1.2.1'

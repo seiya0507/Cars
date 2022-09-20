@@ -1,8 +1,8 @@
 <li>
-  <div class="search_form">
+  <div class="input-group">
   <% if user_signed_in? %>
     <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.text_field :content %>
+      <%= f.text_field :content, placeholder: "キーワードを入力" %>
       <%= f.select :model, options_for_select({ "登録ユーザー" => "user", "レビュー投稿" => "car" }) %>
       <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
       <%= f.submit '検索', class: "btn btn-sm btn-primary" %>

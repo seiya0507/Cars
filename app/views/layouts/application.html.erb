@@ -21,17 +21,17 @@
         <%= render 'layouts/header' %>
       <% end %>
     </header>
-    <div class="container">
-    <main class="row pt-2">
+    <main class="container">
+    <div class="row pt-2">
       <% if flash[:notice] %>
         <p id="notice">
           <%= flash[:notice] %>
         </p>
       <% end %>
       <%= flash[:error] %>
-    </main>
     </div>
     <%= yield %>
+    </main>
     <footer>
       <div class="container mt-5">
         <div class="row">
@@ -40,11 +40,12 @@
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               相手が不快になるようなレビュー・コメントの投稿はお控えいただきますようお願い申し上げます。</br>
               <i class="fa-sharp fa-solid fa-triangle-exclamation"></i><span style="color:red;">ゲストユーザー</span>はレビュー・コメントの投稿、いいね、ユーザーのフォローができません。
-              <span style="color:blue;">新規登録</span>または<span style="color:blue;">ログイン</span>が必要です。
+              <span style="color:blue;">新規ユーザー登録</span>または<span style="color:blue;">ログイン</span>が必要です。
             <% end %>
           </div>
         </div>
       </div>
+      <p></p>
     </footer>
   </body>
 </html>

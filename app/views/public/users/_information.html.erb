@@ -1,6 +1,11 @@
-<h2>ユーザー情報</h2>
-<%= image_tag user.get_profile_image(100,100) %>
-<table class="table table-hover">
+<div class="row">
+ <div class="card">
+   <p></p>
+  <h4 class="text-center">ユーザー情報</h4>
+  <div class="text-center">
+  <%= image_tag user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %>
+  </div>
+  <table class="table table-hover">
   <tbody>
     <tr></tr>
     <tr>
@@ -24,13 +29,15 @@
       </th>
     </tr>
   </tbody>
-</table>
-<div class="row">
-  <% if user == current_user %>
+  </table>
+  <div class="row">
+   <% if user == current_user %>
     <%= link_to "ユーザー情報編集", edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" %>
-  <% else %>
+   <% else %>
     <div id="follow_<%= user.id %>">
       <%= render 'public/relationships/follow', user: user %>
     </div>
-  <% end %>
+   <% end %>
+  </div>
+ </div>
 </div>

@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @cars = @user.cars.order(created_at: :desc)
+    @cars = @user.cars.page(params[:page]).order(created_at: :desc)
     @new_car = Car.new
     @car = @user.cars
   end

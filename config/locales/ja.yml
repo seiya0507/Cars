@@ -11,3 +11,9 @@ ja:
        image: レビュー投稿画像
        star: 星5段階評価
        tag_ids: レビュー投稿タグ
+ views:
+   pagination:
+     first: << 最初
+     next: 次 >
+     last: 最後 >>
+     previous: < 前
