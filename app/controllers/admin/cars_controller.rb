@@ -1,8 +1,8 @@
 class Admin::CarsController < ApplicationController
   before_action :authenticate_admin!
 
-  def index 
-    @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars : Car.all
+  def index
+    @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars.order(created_at: :desc) : Car.all.order(created_at: :desc)
   end
 
   def show

@@ -12,15 +12,15 @@ class Public::CarsController < ApplicationController
     @new_car.user_id = current_user.id
     if @new_car.save
        redirect_to car_path(@new_car.id)
-       flash[:notice] = "レビューを投稿しました！"
+       flash[:notice] = "レビューを投稿しました。"
     else
        @cars = Car.all
        render :index
     end
   end
 
-  def index #タグ検索で絞り込み取得、それ以外は全取得                           #データの順序を変更、製作日時で降順に並び替え
-    @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars : Car.all.order(created_at: :desc)
+  def index #タグ検索で絞り込み取得、それ以外は全取得                 #データの順序を変更、製作日時で降順に並び替え
+    @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars.order(created_at: :desc) : Car.all.order(created_at: :desc)
     @new_car = Car.new
     @user = current_user
   end
@@ -44,7 +44,7 @@ class Public::CarsController < ApplicationController
     @car = Car.find(params[:id])
     if @car.update(car_params)
        redirect_to car_path(@car.id)
-       flash[:notice] = "レビュー投稿内容を更新しました！"
+       flash[:notice] = "レビュー投稿内容を更新しました。"
     else
        render :edit
     end
@@ -54,7 +54,7 @@ class Public::CarsController < ApplicationController
     @car = Car.find(params[:id])
     @car.destroy
     redirect_to cars_path
-    flash[:notice] = "レビュー投稿を削除しました！"
+    flash[:notice] = "レビュー投稿を削除しました。"
   end
 
 
@@ -69,7 +69,7 @@ class Public::CarsController < ApplicationController
   def ensure_guest_user
     @user = current_user
     if @user.name == "guestuser"
-      redirect_to cars_path, notice: 'ゲストユーザーは投稿できません！'
+      redirect_to cars_path, notice: 'ゲストユーザーは投稿できません。'
     end
   end
 end

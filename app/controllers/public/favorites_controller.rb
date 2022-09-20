@@ -20,7 +20,7 @@ class Public::FavoritesController < ApplicationController
   def ensure_guest_user
     @user = current_user
     if @user.name == "guestuser"
-      redirect_to cars_path, notice: 'ゲストユーザーはいいねできません！'
+      redirect_to cars_path, notice: 'ゲストユーザーはいいねできません。'
     end
   end
 

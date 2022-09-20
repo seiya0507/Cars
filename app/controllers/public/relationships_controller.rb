@@ -1,6 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:create, :destroy]
+  before_action :ensure_guest_user
 
   def create
     current_user.follow(params[:user_id])
@@ -31,7 +31,7 @@ class Public::RelationshipsController < ApplicationController
   def ensure_guest_user
     @user = current_user
     if @user.name == "guestuser"
-      redirect_to cars_path, notice: 'ゲストユーザーはフォローできません！'
+      redirect_to cars_path, notice: 'ゲストユーザーはフォロー機能を使用できません。'
     end
   end
 end

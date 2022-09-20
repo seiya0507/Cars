@@ -46,6 +46,7 @@
               </script>
             </div>
           </td>
+          <td>投稿日：<%= car.created_at.strftime('%Y/%m/%d') %></td>
           <td>
             <p><%= link_to "#{car.comments.count} コメント", admin_car_path(car.id) %></p>
           </td>

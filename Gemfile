@@ -68,3 +68,7 @@ gem 'jquery-rails'
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+
+#フラッシュメッセージの日本語化
+gem 'rails-i18n'

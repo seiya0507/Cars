@@ -5,6 +5,7 @@ class Car < ApplicationRecord
   has_many :tags, through: :car_tags
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  #has_many :replies, class_name: "Comment", foreign_key: :reply_comment, dependent: :destroy
 
   #ActiveStorage設定
   has_one_attached :image

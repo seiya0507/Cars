@@ -1,7 +1,5 @@
 <% if new_car.errors.any? %>
-  <h3><%= new_car.errors.count %>
-   errors!
-  </h3>
+  <h4><%= new_car.errors.count %>件のエラーが発生しました！</h4>
   <ul>
   <% new_car.errors.full_messages.each do |message| %>
     <li><%= message %></li>

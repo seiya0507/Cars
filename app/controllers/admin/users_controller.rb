@@ -7,8 +7,8 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @cars = @user.cars
-    @car = @user.cars
+    @cars = @user.cars.order(created_at: :desc)
+    @car = @user.cars.order(created_at: :desc)
   end
 
 end

@@ -2,12 +2,14 @@
 <% unless current_user.freeze %>
   <div class="row pt-3">
     <div class="col-md-3">
+      <%= render 'public/users/users_error', user: @user %>
       <%= render 'error', new_car: @new_car %>
       <%= render 'public/users/information', user: @car_user %>
       <%= render 'create_form', car: @new_car %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>レビュー投稿詳細</h2>
+      <p></p>
       <table class="table">
         <tr>
           <td>
@@ -43,6 +45,7 @@
               </script>
             </div>
           </td>
+          <td>投稿日：<%= @car.created_at.strftime('%Y/%m/%d') %></td>
           <td id="favorite_buttons_<%= @car.id %>">
             <%= render "public/favorites/favorites-btn", car: @car %>
           </td>
