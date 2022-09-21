@@ -16,11 +16,11 @@
             <td>
               <% if car.image.attached? %>
                 <%= link_to car_path(car.id) do %>
-                  <%= image_tag car.image, size: "50x100" %>
+                  <%= image_tag car.image, size: "100x100" %>
                 <% end %>
               <% else %>
                 <%= link_to car_path(car.id) do %>
-                  <%= image_tag asset_path('no_image_car'), size: "100x100" %>
+                  <%= image_tag asset_path('no_image_car.jpg'), size: "100x100" %>
                 <% end %>
               <% end %>
             </td>
