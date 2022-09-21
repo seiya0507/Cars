@@ -16,7 +16,7 @@
             <% if @car.image.attached? %>
               <%= image_tag @car.image, size: "400x300", class:"card-img-top mt-3" %>
             <% else %>
-              <%= image_tag 'no_image_car', size: "400x300", class:"card-img-top mt-3" %>
+              <%= image_tag asset_path('no_image_car'), size: "400x300", class:"card-img-top mt-3" %>
             <% end %>
           </div>
           <div class="car-wrap">
