@@ -29,7 +29,7 @@
             <% end %>
           <% else %>
             <%= link_to car_path(car.id) do %>
-              <%= image_tag 'no_image_car', size: "300x200", class:"card-img-top mt-3" %>
+              <%= image_tag asset_path('no_image_car'), size: "300x200", class:"card-img-top mt-3" %>
             <% end %>
           <% end %>
           <div class="car-body">

@@ -20,7 +20,7 @@
                 <% end %>
               <% else %>
                 <%= link_to car_path(car.id) do %>
-                  <%= image_tag 'no_image_car', size: "100x100" %>
+                  <%= image_tag asset_path('no_image_car'), size: "100x100" %>
                 <% end %>
               <% end %>
             </td>

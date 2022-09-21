@@ -20,7 +20,7 @@
             <% if car.image.attached? %>
               <%= image_tag car.image, size: "100x100" %>
             <% else %>
-              <%= image_tag 'no_image_car', size: "100x100" %>
+              <%= image_tag asset_path('no_image_car'), size: "100x100" %>
             <% end %>
           </td>
           <td><%= car.user.name %></td>
