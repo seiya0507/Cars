@@ -14,7 +14,7 @@ class Public::CarsController < ApplicationController
        redirect_to car_path(@new_car.id)
        flash[:notice] = "レビューを投稿しました。"
     else
-       @cars = Car.all
+       @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars.page(params[:page]).order(created_at: :desc) : Car.page(params[:page]).order(created_at: :desc)
        render :index
     end
   end

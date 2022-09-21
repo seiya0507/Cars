@@ -13,9 +13,7 @@ class Car < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
   validates :tag_ids, presence: true
-
-                   #空を許可
-  validates :star, numericality: true
+  validates :star, presence: true
 
 
   #いいねメソッド
