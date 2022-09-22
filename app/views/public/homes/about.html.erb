@@ -1,16 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="mx-auto col-11 col-sm-10 col-ld-8 col-xl-6">
-      <div class="row pt-5">
+<%= stylesheet_link_tag "about", :media => "all" %>
+<div class="about">
+ <div class="container">
+  <div class="row pt-5">
+    <div class="mx-auto my-5 mainvisual-text">
+      <div class="about-comment text-center">
         <% unless current_user.freeze %>
-          <h3>ようこそCarsへ！about</h3>
-          <% unless user_signed_in? %>
-            <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
-          <% end %>
+          <h1><strong><i class="fa-sharp fa-solid fa-car-on">Carsとは？</i></strong></h1>
+          <p></p></br>
+          <p></p>
+          <h2>Carsではカスタムパーツやインテリア用品などのレビューを投稿できます！</h2>
+          <p></p>
+          <h2>新しいカーアイテムと出会おう。</h2>
+          <p></p>
+          <h4>みんなのレビュー投稿にいいねやコメントを送って車好きの輪を広げよう。</h4>
+          <p></p></br>
+          <p></p>
         <% else %>
-          <h2>本アカウントは凍結中です。</h2>
+          <h1>本アカウントは凍結中です。</h1>
         <% end %>
       </div>
+      <% unless user_signed_in? %>
+        <div class="guest-btn text-center">
+          <%= link_to ">>　ゲストログインしてレビュー投稿をチェックしよう　<<", users_guest_sign_in_path, class: "btn btn-info", method: :post %>
+        </div>
+      <% end %>
     </div>
   </div>
+ </div>
 </div>

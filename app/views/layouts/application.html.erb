@@ -26,14 +26,16 @@
         <%= render 'layouts/header' %>
       <% end %>
     </header>
-    <main class="container">
-    <div class="row pt-2">
+    <main>
+    <div class="container">
+    <div class="row pt-3">
       <% if flash[:notice] %>
         <p id="notice">
           <%= flash[:notice] %>
         </p>
       <% end %>
       <%= flash[:error] %>
+    </div>
     </div>
     <%= yield %>
     </main>
@@ -46,10 +48,16 @@
               相手が不快になるようなレビュー・コメントの投稿はお控えいただきますようお願い申し上げます。</br>
               <i class="fa-sharp fa-solid fa-triangle-exclamation"></i><span style="color:red;">ゲストユーザー</span>はレビュー・コメントの投稿、いいね、ユーザーのフォローができません。
               <span style="color:blue;">新規ユーザー登録</span>または<span style="color:blue;">ログイン</span>が必要です。
+            <% elsif admin_signed_in? %>
+              現在管理者でログインしています。
+            <% else %>
+              <i class="fa-sharp fa-solid fa-triangle-exclamation"></i><span style="color:red;">ゲストユーザー</span>はレビュー・コメントの投稿、いいね、ユーザーのフォローができません。
+              <span style="color:blue;">新規ユーザー登録</span>または<span style="color:blue;">ログイン</span>が必要です。
             <% end %>
           </div>
         </div>
       </div>
+      <p></p></br>
       <p></p>
     </footer>
   </body>

@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
   #バリデーション
   validates :name, uniqueness: true, presence: true , length: { munimum: 2, maximum: 20 }
-  validates :introduction, length: { maximum: 50 }
+  validates :introduction, length: { maximum: 30 }
 
 
   def self.guest

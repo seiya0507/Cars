@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <p></p>
-      <h2 class="text-center">レビュー投稿一覧 (新着順)</h2>
+      <h2 class="text-center">< レビュー投稿一覧 (新着順) ></h2>
       <%= form_tag cars_path, method: :get, class:"boards_searchForm text-center" do %>
         <%= select_tag :tag_id,
           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
@@ -25,11 +25,11 @@
         <div class="col-md-5 card w-50 mx-auto mt-5 shadow text-center">
           <% if car.image.attached? %>
             <%= link_to car_path(car.id) do %>
-              <%= image_tag car.image, size: "300x200", class:"card-img-top mt-3" %>
+              <%= image_tag car.image, size: "300x200", class:"card-img-top mt-3 img-responsive center-block" %>
             <% end %>
           <% else %>
             <%= link_to car_path(car.id) do %>
-              <%= image_tag asset_path('no_image_car.jpg'), size: "300x200", class:"card-img-top mt-3" %>
+              <%= image_tag asset_path('no_image_car.jpg'), size: "300x200", class:"card-img-top mt-3 img-responsive center-block" %>
             <% end %>
           <% end %>
           <div class="car-body">
@@ -37,7 +37,7 @@
                 <%= image_tag car.user.get_profile_image(70,70), class:"mt-3 rounded-circle" %>
               <% end %>
               <i class="fas fa-user"></i> by <%= car.user.name %>
-            <div class="car-title font-large">
+            <div class="car-title">
               <%= link_to car.title, car_path(car.id) %>
             </div>
             <p></p>
@@ -61,6 +61,7 @@
                 </script>
               </div>
             </div>
+            <p></p>
             <div class="car-favorite">
               <div id="favorite_buttons_<%= car.id %>">
                 <%= render 'public/favorites/favorites-btn', car: car %>
@@ -72,6 +73,7 @@
             <div class="car-date">
               投稿日：<%= car.created_at.strftime('%Y/%m/%d') %>
             </div>
+            <p></p>
             <div class="car-btn">
               <%= link_to "レビュー詳細", car_path(car.id), class:"btn btn-sm btn-info" %>
             </div>
@@ -81,14 +83,13 @@
         <% end %>
       </div>
     <div class="row mt-5">
-    <div class="col-12 d-flex justify-content-center">
-      <%= paginate cars %>
-    </div>
-    </div>
-    </div>
+      <div class="col-12 d-flex justify-content-center">
+        <%= paginate cars %>
+      </div>
     </div>
   </div>
 <% else %>
-  <h2>本アカウントは凍結中です。</h2>
+  <p></p>
+  <h2 class="text-center">本アカウントは凍結中です。</h2>
 <% end %>
 </div>

@@ -10,7 +10,7 @@ class Car < ApplicationRecord
   #ActiveStorage設定
   has_one_attached :image
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 30 }
   validates :body, presence: true, length: { maximum: 200 }
   validates :tag_ids, presence: true
   validates :star, presence: true

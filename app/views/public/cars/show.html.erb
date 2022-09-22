@@ -8,7 +8,7 @@
       <%= render 'create_form', car: @new_car %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2 class="text-center">レビュー投稿詳細</h2>
+      <h2 class="text-center"><レビュー投稿詳細></h2>
       <div class="row">
         <div class="card w-80 mx-auto mt-5 shadow text-center">
           <p></p>
@@ -16,7 +16,7 @@
             <% if @car.image.attached? %>
               <%= image_tag @car.image, size: "500x400", class:"card-img-top mt-3" %>
             <% else %>
-              <%= image_tag asset_path('no_image_car.jpg'), size: "500x400", class:"card-img-top mt-3" %>
+              <%= image_tag asset_path('no_image_car.jpg'), size: "500x400", class:"card-img-top mt-3 img-responsive center-block" %>
             <% end %>
           </div>
           <div class="car-wrap">
@@ -63,8 +63,8 @@
             <p></p>
             <div class="car-btn">
               <% if @car.user == current_user %>
-                <%= link_to "編集する", edit_car_path(@car.id), class:"btn btn-sm btn-info" %> |
-                <%= link_to "削除する", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
+                <%= link_to "投稿を編集", edit_car_path(@car.id), class:"btn btn-sm btn-info" %> |
+                <%= link_to "投稿を削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
               <% end %>
             </div>
             <p></p>
