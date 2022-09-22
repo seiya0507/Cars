@@ -1,5 +1,5 @@
 <%= form_with(model: [car, comment], local: false) do |f| %>
-  <%= f.text_area :comment, placeholder: "コメントを入力", class:"form-control" %>
+  <%= f.text_area :comment, placeholder: "コメントを入力", :size=>"60", class:"form-control" %>
   <p></p>
   <%= f.submit "送信する", class: "btn btn-success" %>
 <% end %>
