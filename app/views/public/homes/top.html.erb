@@ -5,10 +5,10 @@
     <div class="mx-auto my-5 mainvisual-text">
       <div class="top-comment text-center">
         <% unless current_user.freeze %>
-          <h1><strong><i class="fa-sharp fa-solid fa-car-on">ようこそCarsへ！</i></strong></h1>
+          <h1><strong><span style="color:yellow;"><i class="fa-sharp fa-solid fa-car-on">ようこそCARSへ！</i></span></strong></h1>
           <p></p></br>
           <p></p>
-          <h2>Carsで愛車のカスタムパーツ・インテリア用品を自慢しよう。</h2>
+          <h2>CARSで愛車のカスタムパーツ・インテリア用品を自慢しよう。</h2>
           <p></p>
           <h4>みんなのレビューを見ることであなたの知らないパーツに出会えるかもしれない。</h4>
           <p></p></br>
@@ -19,7 +19,7 @@
       </div>
       <% unless user_signed_in? %>
         <div class="guest-btn text-center">
-          <%= link_to ">>　ゲストログインしてレビュー投稿をチェックしよう　<<", users_guest_sign_in_path, class: "btn btn-info", method: :post %>
+          <%= link_to ">>　ゲストログインしてレビュー投稿をチェックしよう　<<", users_guest_sign_in_path, class: "btn btn-primary", method: :post %>
         </div>
       <% end %>
     </div>
