@@ -3,7 +3,8 @@
     <div class="col-md-10">
       <h2>< レビュー投稿詳細管理 ></h2>
       <p></p>
-      <table class="table">
+      <div class="table-responsive">
+      <table class="table table-hover">
         <tr>
           <td>
             <% if @car.image.attached? %>
@@ -41,6 +42,7 @@
           <td><%= link_to "削除", admin_car_path(@car.id), method: :delete, class:"btn btn-sm btn-danger" %></td>
         </tr>
       </table>
+      </div>
       <h4>コメント一覧</h4>
       <% @car.comments.each do |comment| %>
         <p><%= image_tag comment.user.get_profile_image(100,100) %></p>

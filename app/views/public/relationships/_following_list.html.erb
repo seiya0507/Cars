@@ -5,6 +5,7 @@
       <h2>< フォローユーザー一覧 ></h2>
       <p></p>
       <% if users.exists? %>
+        <div class="table-responsive">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -37,6 +38,7 @@
             <% end %>
           </tbody>
         </table>
+        </div>
       <% else %>
         <p>フォローユーザーはいません。</p>
       <% end %>

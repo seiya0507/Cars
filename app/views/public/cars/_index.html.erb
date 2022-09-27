@@ -23,6 +23,7 @@
       <div class="row">
         <% cars.each do |car| %>
         <div class="col-md-5 card w-50 mx-auto mt-5 shadow text-center">
+          <div class="car_img">
           <% if car.image.attached? %>
             <%= link_to car_path(car.id) do %>
               <%= image_tag car.image, size: "300x200", class:"card-img-top mt-3 img-responsive center-block" %>
@@ -32,6 +33,7 @@
               <%= image_tag asset_path('no_image_car.jpg'), size: "300x200", class:"card-img-top mt-3 img-responsive center-block" %>
             <% end %>
           <% end %>
+          </div>
           <div class="car-body">
               <%= link_to user_path(car.user.id) do %>
                 <%= image_tag car.user.get_profile_image(70,70), class:"mt-3 rounded-circle" %>
