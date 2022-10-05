@@ -1,8 +1,9 @@
+<%= stylesheet_link_tag "car_user", :media => "all" %>
 <div class="container px-5 px-sm-0">
 <% unless current_user.freeze %>
   <div class="row pt-3">
     <div class="col-md-10 offset-md-1">
-      <h2>< フォローワーユーザー一覧 ></h2>
+      <h2>< <%= @user.name %>さんのフォロワーユーザー一覧 ></h2>
       <p></p>
       <% if users.exists? %>
         <div class="table-responsive">

@@ -14,6 +14,9 @@ module Cars
     #日本語設定
     config.i18n.default_locale = :ja
 
+    config.time_zone = 'Tokyo'
+
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
