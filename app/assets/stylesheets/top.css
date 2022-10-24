@@ -15,7 +15,7 @@
               -2px -2px 5px red;
   animation-name: fadeInAnime;
   animation-fill-mode:backwards;
-  animation-duration:3s;
+  animation-duration:1.5s;
   animation-iteration-count:1;
   animation-timing-function:ease-out;
   animation-delay: 0.5s;
