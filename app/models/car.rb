@@ -5,7 +5,6 @@ class Car < ApplicationRecord
   has_many :tags, through: :car_tags
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-  #has_many :replies, class_name: "Comment", foreign_key: :reply_comment, dependent: :destroy
 
   #ActiveStorage設定
   has_one_attached :image
@@ -17,9 +16,9 @@ class Car < ApplicationRecord
 
   #orderデータ取り出し  desc昇順  asc降順
   scope :latest, -> {order(created_at: :desc)}
-  
   scope :old, -> {order(created_at: :asc)}
-  
+
+  #star_count星5段階評価順
   scope :star_count, -> {order(star: :desc)}
 
   #いいねメソッド
