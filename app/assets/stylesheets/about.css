@@ -40,8 +40,7 @@
   border-radius: 3px;
 }
 .btn-primary:active {
-  /*ボタンを押したとき*/
   -webkit-transform: translateY(4px);
-  transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
+  transform: translateY(4px);
+  border-bottom: none;
 }

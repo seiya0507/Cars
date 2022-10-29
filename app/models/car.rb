@@ -15,6 +15,12 @@ class Car < ApplicationRecord
   validates :tag_ids, presence: true
   validates :star, presence: true
 
+  #orderデータ取り出し  desc昇順  asc降順
+  scope :latest, -> {order(created_at: :desc)}
+  
+  scope :old, -> {order(created_at: :asc)}
+  
+  scope :star_count, -> {order(star: :desc)}
 
   #いいねメソッド
   def favorited_by?(user)

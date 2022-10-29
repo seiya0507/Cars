@@ -14,15 +14,29 @@ class Public::CarsController < ApplicationController
        redirect_to car_path(@new_car.id)
        flash[:notice] = "レビューを投稿しました。"
     else
-       @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars.page(params[:page]).order(created_at: :desc) : Car.page(params[:page]).order(created_at: :desc)
+       @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars.page(params[:page]): Car.page(params[:page])
        render :index
     end
   end
 
-  def index #タグ検索で絞り込み取得、それ以外は全取得                 #データの順序を変更、製作日時で降順に並び替え
-    @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars.page(params[:page]).order(created_at: :desc) : Car.page(params[:page]).order(created_at: :desc)
+  def index
     @new_car = Car.new
     @user = current_user
+    if params[:tag_id]
+      #タグ検索で絞り込み取得、それ以外は全取得
+      @cars = params[:tag_id].present? ? Tag.find(params[:tag_id]).cars.page(params[:page]): Car.page(params[:page])
+      #latest:新着順
+    elsif params[:latest]
+      @cars = Car.latest.page(params[:page])
+      #old:古い順
+    elsif params[:old]
+      @cars = Car.old.page(params[:page])
+      #star_count:星5段階評価順
+    elsif params[:star_count]
+      @cars = Car.star_count.page(params[:page])
+    else
+      @cars = Car.all.page(params[:page])
+    end
   end
 
   def show
