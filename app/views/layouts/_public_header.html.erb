@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <strong><span style="color:yellow;">ようこそ<%= current_user.name %>さん！</span></strong>
+    <div class="welcome-name">
+      <strong><i><span style="color:white;">ようこそ</span><span style="color:yellow;"><%= current_user.name %>さん</span><span style="color:white;">！</span></i></strong>
+    </div>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <%= link_to root_path, class:"nav-link text-light btn btn-success rounded-pill p-0" "style=width:2rem;height:2rem;" do %>

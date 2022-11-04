@@ -2,7 +2,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row pt-3">
     <div class="col-md-12">
-      <h2>< 登録ユーザー管理 ></h2>
+      <h2><i>登録ユーザー管理</i></h2>
       <p></p>
       <div class="table-responsive">
       <table class="table table-hover">
@@ -11,7 +11,7 @@
             <th></th>
             <th><span style="font-size:13px;">ユーザー名</span></th>
             <th><span style="font-size:15px;">マイカー</span></th>
-            <th><%= link_to "凍結中ユーザー一覧", admin_freezes_path, class:"btn btn-sm btn-info" %></th>
+            <th><%= link_to "凍結中ユーザー一覧", admin_freezes_path, class:"btn btn-sm btn-primary" %></th>
           </tr>
         </thead>
         <% @users.each do |user| %>
