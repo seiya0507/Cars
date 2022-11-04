@@ -9,7 +9,7 @@
       <%= render 'create_form', car: @new_car %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2 class="text-center"><レビュー投稿詳細></h2>
+      <h2 class="text-center">レビュー投稿詳細</h2>
       <div class="row">
         <div class="card w-80 mx-auto mt-5 shadow text-center">
           <p></p>
@@ -64,7 +64,7 @@
             <p></p>
             <div class="car-btn">
               <% if @car.user == current_user %>
-                <%= link_to "投稿を編集", edit_car_path(@car.id), class:"btn btn-sm btn-info" %> |
+                <%= link_to "投稿を編集", edit_car_path(@car.id), class:"btn btn-sm btn-success" %> |
                 <%= link_to "投稿を削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
               <% end %>
             </div>

@@ -9,10 +9,30 @@
 }
 
 .about-comment {
-  text-shadow:  2px 2px 5px red,
-              -2px 2px 5px red,
-               2px -2px 5px red,
-              -2px -2px 5px red;
+  text-shadow:  2px 2px 5px blue,
+              -2px 2px 5px blue,
+               2px -2px 5px blue,
+              -2px -2px 5px blue;
+  animation-name: fadeInAnime;
+  animation-fill-mode:backwards;
+  animation-duration:1.5s;
+  animation-iteration-count:1;
+  animation-timing-function:ease-out;
+  animation-delay: 0.5s;
+  animation-direction:normal;
+}
+
+@keyframes fadeInAnime {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.guest-btn {
   animation-name: fadeInAnime;
   animation-fill-mode:backwards;
   animation-duration:1.5s;
@@ -41,6 +61,20 @@
 }
 
 .btn-primary:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+
+.btn-success {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+
+.btn-success:active {
   -webkit-transform: translateY(4px);
   transform: translateY(4px);
   border-bottom: none;

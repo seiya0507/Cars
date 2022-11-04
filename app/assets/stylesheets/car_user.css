@@ -18,7 +18,7 @@ h2, h3 {
 }
 
 .btn-info {
-  background: #eee;
+  background: #00ffff;
   border-radius: 3px;
   position: relative;
   display: flex;
@@ -54,6 +54,7 @@ h2, h3 {
   background: #6bb6ff;
   color: #FFF;
 }
+
 .btn-info:hover:after {
   right: 1.4rem;
 }
