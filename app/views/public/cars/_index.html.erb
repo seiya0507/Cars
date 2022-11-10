@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag "car_user", :media => "all" %>
+<div class="car-index">
 <div class="container px-5 px-sm-0">
 <% unless current_user.freeze %>
   <div class="row pt-3">
@@ -100,4 +101,5 @@
   <p></p>
   <h2 class="text-center">本アカウントは凍結中です。</h2>
 <% end %>
+</div>
 </div>
