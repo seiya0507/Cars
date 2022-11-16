@@ -11,13 +11,13 @@
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to homes_about_path, class:"nav-link text-light btn btn-success rounded-pill p-0" "style=width:2rem;height:2rem;" do %>
+        <%= link_to homes_about_path, data: {"turbolinks" => false}, class:"nav-link text-light btn btn-success rounded-pill p-0" "style=width:2rem;height:2rem;" do %>
           <i class="fa-solid fa-question"></i>
           Carsとは
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to user_path(current_user), class:"nav-link text-light btn btn-success rounded-pill p-0" "style=width:2rem;height:2rem;" do %>
+        <%= link_to user_path(current_user), data: {"turbolinks" => false}, class:"nav-link text-light btn btn-success rounded-pill p-0" "style=width:2rem;height:2rem;" do %>
           <i class="fa-solid fa-user"></i>
           マイページ
         <% end %>
@@ -29,7 +29,7 @@
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light btn btn-success rounded-pill p-0" "style=width:2rem;height:2rem;" do %>
+        <%= link_to destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class:"nav-link text-light btn btn-success rounded-pill p-0" "style=width:2rem;height:2rem;" do %>
           <i class="fas fa-sign-out-alt"></i>
           ログアウト
         <% end %>

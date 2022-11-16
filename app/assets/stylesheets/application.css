@@ -122,6 +122,10 @@ li {
   opacity: 0;
   visibility: hidden;
 }
+
+.loading-txt {
+  font-size: 50px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
