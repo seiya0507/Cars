@@ -69,8 +69,8 @@
             <p></p>
             <div class="car-btn">
               <% if @car.user == current_user %>
-                <%= link_to "投稿を編集", edit_car_path(@car.id), class:"btn btn-sm btn-success" %> |
-                <%= link_to "投稿を削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
+                <%= link_to "投稿を編集", edit_car_path(@car.id), data: {"turbolinks" => false}, class:"btn btn-sm btn-success" %> |
+                <%= link_to "投稿を削除", car_path(@car.id), method: :delete, "data-confirm" => "本当に削除しますか？", data: {"turbolinks" => false}, class:"btn btn-sm btn-danger" %>
               <% end %>
             </div>
             <p></p>

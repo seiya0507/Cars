@@ -1,4 +1,9 @@
 <%= stylesheet_link_tag "car_user", :media => "all" %>
+<div id="loading">
+  <div class="spinner">
+    <p class="loading-txt">Loading...</p>
+  </div>
+</div>
 <div class="container px-5 px-sm-0">
 <% unless current_user.freeze %>
   <div class="row pt-3">
@@ -19,11 +24,11 @@
             <% users.each do |user| %>
               <tr class="user_id_<%= user.id %>">
                 <td>
-                  <%= link_to user_path(user.id) do %>
+                  <%= link_to user_path(user.id), data: {"turbolinks" => false} do %>
                     <%= image_tag user.get_profile_image(100,100), class:"mt-3 rounded-circle" %>
                   <% end %>
                 </td>
-                <td><%= link_to user.name, user_path(user.id) %></td>
+                <td><%= link_to user.name, user_path(user.id), data: {"turbolinks" => false} %></td>
                 <td><%= user.introduction %></td>
                 <td class="follow-count" id="follow_count_<%= user.id %>">
                   <%= render 'public/relationships/follow_counter', user: user %>
@@ -34,7 +39,7 @@
                 <td id="follow_<%= user.id %>">
                   <%= render 'public/relationships/follow', user: user %>
                 </td>
-                <td><%= link_to "ユーザー詳細へ", user_path(user.id), class:"btn btn-sm btn-success" %></td>
+                <td><%= link_to "ユーザー詳細へ", user_path(user.id), data: {"turbolinks" => false}, class:"btn btn-sm btn-success" %></td>
               </tr>
             <% end %>
           </tbody>

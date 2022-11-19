@@ -1,13 +1,18 @@
 <%= stylesheet_link_tag "car_user", :media => "all" %>
+<div id="loading">
+  <div class="spinner">
+    <p class="loading-txt">Loading...</p>
+  </div>
+</div>
 <div class="container px-5 px-sm-0">
   <div class="row pt-3">
     <div class="col-md-12">
       <h2><i>登録ユーザー詳細</i></h2>
       <p></p>
       <% if @user.freeze %>
-        <%= link_to "凍結解除", admin_user_freeze_path(@user), method: :delete, class:"btn btn-sm btn-info" %>
+        <%= link_to "凍結解除", admin_user_freeze_path(@user), method: :delete, data: {"turbolinks" => false}, class:"btn btn-sm btn-info" %>
       <% else %>
-        <%= link_to "凍結する", admin_user_freeze_path(@user), method: :post, class: "btn btn-sm btn-danger" %>
+        <%= link_to "凍結する", admin_user_freeze_path(@user), method: :post, data: {"turbolinks" => false}, class: "btn btn-sm btn-danger" %>
       <% end %>
       <p></p>
       <div class="table-responsive">
@@ -38,7 +43,7 @@
               </script>
             </div>
           </td>
-          <td><%= link_to "詳細", admin_car_path(car.id), class:"btn btn-sm btn-success" %></td>
+          <td><%= link_to "詳細", admin_car_path(car.id), data: {"turbolinks" => false}, class:"btn btn-sm btn-success" %></td>
         </tr>
     　  <% end %>
       </table>

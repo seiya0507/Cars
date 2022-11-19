@@ -1,3 +1,8 @@
+<div id="loading">
+  <div class="spinner">
+    <p class="loading-txt">Loading...</p>
+  </div>
+</div>
 <div class = "container mt-5">
   <div class="row">
     <div class="mx-auto text-center mt-5">
@@ -14,8 +19,8 @@
   </div>
   <div class="row">
     <div class="mx-auto text-center mt-3">
-       <%= link_to "退会しない", user_path(current_user.id), class: 'btn btn-primary mr-5'%>
-       <%= link_to "退会する", user_users_withdraw_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: 'btn btn-danger'%>
+       <%= link_to "退会しない", user_path(current_user.id), data: {"turbolinks" => false}, class: 'btn btn-primary mr-5'%>
+       <%= link_to "退会する", user_users_withdraw_path, method: :patch, data: {confirm: "本当に退会しますか？"}, data: {"turbolinks" => false}, class: 'btn btn-danger'%>
       </div>
   </div>
 </div>

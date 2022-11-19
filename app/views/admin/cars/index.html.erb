@@ -1,4 +1,9 @@
 <%= stylesheet_link_tag "car_user", :media => "all" %>
+<div id="loading">
+  <div class="spinner">
+    <p class="loading-txt">Loading...</p>
+  </div>
+</div>
 <div class="container px-5 px-sm-0">
   <div class="row pt-3">
     <div class="col-md-12">
@@ -50,9 +55,9 @@
           </td>
           <td>投稿日：<%= car.created_at.strftime('%Y/%m/%d') %></td>
           <td>
-            <p><%= link_to "#{car.comments.count} コメント", admin_car_path(car.id) %></p>
+            <p><%= link_to "#{car.comments.count} コメント", admin_car_path(car.id), data: {"turbolinks" => false} %></p>
           </td>
-          <td><%= link_to "詳細", admin_car_path(car.id), class:"btn btn-sm btn-success" %></td>
+          <td><%= link_to "詳細", admin_car_path(car.id), data: {"turbolinks" => false}, class:"btn btn-sm btn-success" %></td>
         </tr>
         <% end %>
       </table>
